@@ -40,7 +40,7 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
 
 
     try:
-        # Get search result to be displayed to the user
+        # get search result to be displayed to the user
         response = client.models.generate_content(
             model=model_id,
             contents=prompt,
@@ -50,11 +50,11 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
             )
         )
 
-        # Initialize variables to avoid UnboundLocalError
+        # initialize variables to avoid UnboundLocalError
         search_result = ""
         image = None
 
-        # Extract search result
+        # extract search result
         for each in response.candidates[0].content.parts:
             if each.text:
                 search_result += each.text
@@ -75,7 +75,7 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
             "Picasso": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Picasso-style image"
         }
 
-        # Check if the image_style is supported
+        # check if the image_style is supported
         if image_style in style_prompts:
             image_gen_prompt = style_prompts[image_style]
         else:
@@ -108,7 +108,7 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         )
 
 
-        # Generate audio from search result
+        # generate audio from search result
         audio_resp = client.models.generate_content(
             model="gemini-2.5-flash-preview-tts",
             contents=trans_resp.text,
@@ -129,7 +129,7 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         audio_output_file = "out.wav"
         wave_file(audio_output_file, data)
 
-        # Generate image prompt from search result
+        # generate image prompt from search result
         output = client.models.generate_content(
             model=model_id,
             contents=image_gen_prompt,
@@ -144,8 +144,8 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
             if single.text:
                 prompt_image += single.text
 
-        # Generate image
-        if prompt_image:  # Only generate image if we have a prompt
+        # generate image
+        if prompt_image:  
             response = client.models.generate_content(
                 model="gemini-2.0-flash-preview-image-generation",
                 contents=prompt_image,
@@ -154,17 +154,17 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
                 )
             )
 
-            # Extract image from response
+            # extract image from response
             for part in response.candidates[0].content.parts:
                 if part.text is not None:
-                    pass  # Handle text if needed
+                    pass 
                 elif part.inline_data is not None:
                     image = Image.open(BytesIO(part.inline_data.data))
-                    break  # Exit loop once we find the image
+                    break  
 
     except Exception as e:
         print(f"Error occurred: {e}")
-        # Return default values in case of error
+        # return default values in case of error
         return trans_resp.text or "No search result available", None, None
 
     return trans_resp.text, image, audio_output_file
