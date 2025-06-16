@@ -1,5 +1,5 @@
 # **SynthScope**
 
-A Gemini 2.0-powered internet search tool, making internet search fun!
+Search, visualize, and Listen to information. Powered by the Gemini family of models.
 
-![SynthScope](SynthScope.jpg)
+![SynthScope](SynthScope.gif)
