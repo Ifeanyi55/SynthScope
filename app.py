@@ -69,11 +69,12 @@ with gr.Blocks(theme=gr.themes.Base(primary_hue="teal", secondary_hue="amber").s
                }
                """) as app:
 
-    gr.HTML("<div style='text-align:center;overflow:hidden;padding:20px;'><h1 style='color:#14b8a6;text-shadow: 0 0 20px rgba(20, 184, 166, 0.4);'>🌐 SynthScope 👤</h1><p style='color:#94a3b8;'>Search, Visualize, and Listen to Information</p></div>")
+    gr.HTML("<div style='text-align:center;overflow:hidden;padding:20px;'><h1 style='color:#14b8a6;text-shadow: 0 0 20px rgba(20, 184, 166, 0.4);'>SynthScope</h1><h1><p>🌐   🎨   🔊</p></h1><p style='color:#94a3b8;'>Search, Visualize, Listen to Information</p></div>")
+    gr.HTML("<h4><p style='color:#14b8a6;text-shadow: 0 0 20px rgba(20, 184, 166, 0.4);text-align:center;'>SynthScope enables you to return web search results as text, image, and translated audio simultaneously.</p></h4>")
 
     # Output Section
     with gr.Column(elem_classes="output-section"):
-        gr.HTML("<div class='section-title'>📊 Search Results</div>")
+        gr.HTML("<div class='section-title'>✅ Search Results</div>")
 
         # Text and Image in a row
         with gr.Row():
@@ -109,13 +110,13 @@ with gr.Blocks(theme=gr.themes.Base(primary_hue="teal", secondary_hue="amber").s
                 )
             with gr.Column(scale=1):
                 voice_input = gr.Dropdown(
-                    label="👤Select Voice",
+                    label="🎙️ Select Voice",
                     choices=["Kore", "Zephyr", "Orus", "Fenrir", "Charon", "Umbriel", "Schedar", "Iapetus", "Puck", "Gacrux"],
                     value="Kore"
                 )
             with gr.Column(scale=1):
                 language_input = gr.Dropdown(
-                    label="👤Select Language",
+                    label="🉑 Select Language",
                     choices=["English", "Spanish", "Thai", "German", "Italian", "Tamil", "Arabic", "French", "Romanian", "Turkish", "Dutch", "Polish", "Japanese", "Portuguese", "Russian"],
                     value="English"
                 )
