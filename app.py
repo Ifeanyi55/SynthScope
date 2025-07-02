@@ -72,75 +72,104 @@ with gr.Blocks(theme=gr.themes.Base(primary_hue="teal", secondary_hue="amber").s
     gr.HTML("<div style='text-align:center;overflow:hidden;padding:20px;'><h1 style='color:#14b8a6;text-shadow: 0 0 20px rgba(20, 184, 166, 0.4);'>SynthScope</h1><h1><p>🌐   🎨   🔊</p></h1><p style='color:#94a3b8;'>Search, Visualize, Listen to Information</p></div>")
     gr.HTML("<h4><p style='color:#14b8a6;text-shadow: 0 0 20px rgba(20, 184, 166, 0.4);text-align:center;'>SynthScope enables you to return web search results as text, image, and translated audio simultaneously.</p></h4>")
 
-    # Output Section
-    with gr.Column(elem_classes="output-section"):
-        gr.HTML("<div class='section-title'>✅ Search Results</div>")
+    # Collapsible Sidebar for Controls
+    with gr.Sidebar(elem_classes="input-section"):
+        gr.HTML("<div class='section-title'>🔧 Search Configuration</div>")
+        
+        # Primary search input
+        text_input = gr.Textbox(
+            label="🔍 Search Query",
+            placeholder="Enter your search topic...",
+            lines=4,
+            max_lines=6
+        )
+        
+        # Configuration options
+        language_input = gr.Dropdown(
+            label="🌍 Output Language",
+            choices=["English", "Spanish", "French", "German", "Italian", "Japanese", "Tamil", "Arabic", "Russian", "Portuguese", "Dutch", "Thai", "Turkish", "Romanian", "Polish"],
+            value="English",
+            info="Language for text and audio"
+        )
+        
+        voice_input = gr.Dropdown(
+            label="🎙️ Voice Selection",
+            choices=["Kore", "Zephyr", "Orus", "Fenrir", "Charon", "Umbriel", "Schedar", "Iapetus", "Puck", "Gacrux"],
+            value="Kore",
+            info="Voice for audio narration"
+        )
+        
+        radio_input = gr.Radio(
+            label="🎨 Visual Style",
+            choices=["Comic", "Cartoon", "Disney", "Anime", "Ghibli", "Victorian", "Movie", "Star Wars", "Marvel", "Van Gogh", "Picasso"],
+            value="Comic",
+            info="Artistic style for images"
+        )
 
-        # Text and Image in a row
+    # Main Body for Results and Actions
+    # Action buttons at the top of main body
+    with gr.Row():
+        btn = gr.Button(
+            "🚀 Run SynthScope",
+            variant="primary",
+            size="lg",
+            scale=1
+        )
+        clear_btn = gr.ClearButton(
+            [text_input, radio_input, language_input, voice_input],
+            value="🗑️ Clear Inputs",
+            variant="secondary",
+            size="lg",
+            scale=1
+        )
+
+    # Results Section
+    with gr.Column(elem_classes="output-section"):
+        gr.HTML("<div class='section-title'>📊 Generated Results</div>")
+        gr.HTML("<p style='color:#94a3b8; margin-bottom:15px; text-align:center;'>Your search results will appear below once processing is complete</p>")
+
+        # Text and Image side by side
         with gr.Row():
             with gr.Column(scale=1):
                 gr.HTML("<h4 style='color:#14b8a6; margin-bottom:10px; text-shadow: 0 0 10px rgba(20, 184, 166, 0.3);'>📝 Text Summary</h4>")
-                text_output = gr.Markdown(height=320, container=True)
+                text_output = gr.Markdown(
+                    value="*Search results will appear here...*",
+                    height=350,
+                    container=True
+                )
             with gr.Column(scale=1):
                 gr.HTML("<h4 style='color:#14b8a6; margin-bottom:10px; text-shadow: 0 0 10px rgba(20, 184, 166, 0.3);'>🎨 Generated Image</h4>")
-                image_output = gr.Image(label="", show_label=False, height=320, container=True)
-
-        # Audio in its own row with proper spacing
-        with gr.Row():
-            with gr.Column():
-                gr.HTML("<h4 style='color:#14b8a6; margin-bottom:10px; text-shadow: 0 0 10px rgba(20, 184, 166, 0.3);'>🔊 Audio Narration</h4>")
-                audio_output = gr.Audio(
+                image_output = gr.Image(
                     label="",
-                    type="filepath",
                     show_label=False,
-                    elem_classes="audio-container",
-                    interactive=False
+                    height=350,
+                    container=True,
+                    placeholder="Generated image will appear here..."
                 )
 
-    # Input Section
-    with gr.Column(elem_classes="input-section"):
-        gr.HTML("<div class='section-title'>🔧 Controls</div>")
+        # Audio spanning full width below text and image
+        gr.HTML("<h4 style='color:#14b8a6; margin-bottom:10px; text-shadow: 0 0 10px rgba(20, 184, 166, 0.3);'>🔊 Audio Narration</h4>")
+        audio_output = gr.Audio(
+            label="",
+            type="filepath",
+            show_label=False,
+            elem_classes="audio-container",
+            interactive=False
+        )
+        gr.HTML("<p style='color:#94a3b8; font-size:0.9em; text-align:center; margin-top:10px;'>Audio will be generated in your selected language and voice</p>")
 
-        with gr.Row():
-            with gr.Column(scale=2):
-                text_input = gr.Textbox(
-                    label="🔍 Search Query",
-                    placeholder="Enter your search query here...",
-                    lines=2
-                )
-            with gr.Column(scale=1):
-                voice_input = gr.Dropdown(
-                    label="🎙️ Select Voice",
-                    choices=["Kore", "Zephyr", "Orus", "Fenrir", "Charon", "Umbriel", "Schedar", "Iapetus", "Puck", "Gacrux"],
-                    value="Kore"
-                )
-            with gr.Column(scale=1):
-                language_input = gr.Dropdown(
-                    label="🉑 Select Language",
-                    choices=["English", "Spanish", "Thai", "German", "Italian", "Tamil", "Arabic", "French", "Romanian", "Turkish", "Dutch", "Polish", "Japanese", "Portuguese", "Russian"],
-                    value="English"
-                )
-            with gr.Column(scale=1):
-                radio_input = gr.Radio(
-                    label="🎨 Image Style",
-                    choices=["Comic", "Cartoon", "Disney", "Anime", "Ghibli", "Victorian", "Movie", "Star Wars", "Marvel", "Van Gogh", "Picasso"],
-                    value="Comic"
-                )
-
-        with gr.Row():
-            with gr.Column(scale=1):
-                btn = gr.Button(
-                    "🚀 Run SynthScope",
-                    variant="primary",
-                    size="lg"
-                )
-            with gr.Column(scale=1):
-                clear_btn = gr.ClearButton(
-                    [text_input, radio_input, language_input, voice_input, text_output, image_output, audio_output],
-                    value="🗑️ Clear All",
-                    variant="secondary",
-                    size="lg"
-                )
+    # Footer with usage tips
+    gr.HTML("""
+    <div style='text-align:center; margin-top:30px; padding:20px; background:rgba(15, 23, 42, 0.5); border-radius:10px; border:1px solid rgba(20, 184, 166, 0.2);'>
+        <h4 style='color:#14b8a6; margin-bottom:10px;'>💡 Tips for Best Results</h4>
+        <p style='color:#94a3b8; font-size:0.9em; line-height:1.5;'>
+            • Be specific in your search queries for more accurate results<br>
+            • Try different visual styles to match your content theme<br>
+            • Audio generation works best with shorter text summaries<br>
+            • Processing may take 30-60 seconds depending on complexity
+        </p>
+    </div>
+    """)
 
     # Event handlers
     btn.click(
