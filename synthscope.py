@@ -16,6 +16,16 @@ google_search_tool = Tool(
 model_id = "gemini-2.0-flash"
 
 def GoogleSearchImageGen(prompt, image_style, voices, language):
+    """
+    Returns Google Search results as translated text, audio, and image
+    Args:
+        prompt: A natural language query for Google Search
+        image_style: A list of different styles for the generated image
+        voice: A list of different voices for the generated audio
+        language: A list of different languages for the generated text and audio
+    Returns:
+        Text, image, audio.
+    """
     def wave_file(filename, pcm, channels=1, rate=24000, sample_width=2):
         with wave.open(filename, "wb") as wf:
             wf.setnchannels(channels)
