@@ -180,4 +180,4 @@ with gr.Blocks(theme=gr.themes.Base(primary_hue="teal", secondary_hue="amber").s
     )
 
 if __name__ == "__main__":
-    app.launch()
+    app.launch(mcp_server = True)
