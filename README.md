@@ -1,3 +1,11 @@
+[![License](https://img.shields.io/github/license/Ifeanyi55/SynthScope)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/Ifeanyi55/SynthScope?style=social)](https://github.com/Ifeanyi55/SynthScope/stargazers)
+[![Forks](https://img.shields.io/github/forks/Ifeanyi55/SynthScope?style=social)](https://github.com/Ifeanyi55/SynthScope/network/members)
+[![Issues](https://img.shields.io/github/issues/Ifeanyi55/SynthScope)](https://github.com/Ifeanyi55/SynthScope/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/Ifeanyi55/SynthScope)](https://github.com/Ifeanyi55/SynthScope/commits/main)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Ifeanyi55/SynthScope)
+
+
 # **SynthScope**
 
 Search, visualize, listen to information. Powered by the Gemini family of models.
