@@ -8,7 +8,7 @@
 
 # **SynthScope**
 
-Search, visualize, listen to information. Powered by the Gemini family of models.
+A Google Search agent that enables you to search, visualize, listen to information. Powered by the Gemini family of models.
 
 ![SynthScope](SynthScope.gif)
 
