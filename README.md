@@ -45,3 +45,7 @@ Or
   }
 }
 ```
+
+# **Contributing**
+
+Please read the [contributing guide](CONTRIBUTING.md) in order to see how you can contribute to the project.
