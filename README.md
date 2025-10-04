@@ -1,4 +1,5 @@
 [![License](https://img.shields.io/github/license/Ifeanyi55/SynthScope)](./LICENSE)
+![Build Status](https://github.com/Ifeanyi55/SynthScope/actions/workflows/ci.yml/badge.svg)
 [![Stars](https://img.shields.io/github/stars/Ifeanyi55/SynthScope?style=social)](https://github.com/Ifeanyi55/SynthScope/stargazers)
 [![Forks](https://img.shields.io/github/forks/Ifeanyi55/SynthScope?style=social)](https://github.com/Ifeanyi55/SynthScope/network/members)
 [![Issues](https://img.shields.io/github/issues/Ifeanyi55/SynthScope)](https://github.com/Ifeanyi55/SynthScope/issues)
