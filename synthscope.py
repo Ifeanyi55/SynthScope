@@ -10,10 +10,11 @@ api_key = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
 google_search_tool = Tool(
-    google_search = GoogleSearch()
+    google_search=GoogleSearch()
 )
 
 model_id = "gemini-2.0-flash"
+
 
 def GoogleSearchImageGen(prompt, image_style, voices, language):
     """
@@ -22,7 +23,8 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         prompt: A natural language query for Google Search
         image_style: A list of different styles for the generated image
         voice: A list of different voices for the generated audio
-        language: A list of different languages for the generated text and audio
+        language: A list of different languages for the generated text
+        and audio
     Returns:
         Text, image, audio.
     """
@@ -32,7 +34,6 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
             wf.setsampwidth(sample_width)
             wf.setframerate(rate)
             wf.writeframes(pcm)
-
 
     # define audio output voice
     select_voice = {
@@ -47,7 +48,6 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         "Puck": "Puck",
         "Gacrux": "Gacrux"
     }
-
 
     try:
         # get search result to be displayed to the user
@@ -69,20 +69,41 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
             if each.text:
                 search_result += each.text
 
-
         # define style-specific prompts
         style_prompts = {
-            "Comic": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a comic book-style image.",
-            "Cartoon": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a cartoon-style image.",
-            "Disney": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Disney-style image.",
-            "Anime": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates an Anime-style image.",
-            "Ghibli": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Ghibli-style image.",
-            "Victorian": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Victorian-era image.",
-            "Movie": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Movie-style image.",
-            "Star Wars": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Star Wars-style image.",
-            "Marvel": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Marvel-style image.",
-            "Van Gogh": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Van Gogh-style image.",
-            "Picasso": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Picasso-style image"
+            "Comic": f"Convert the {search_result} into a "
+                     f"well-crafted text-to-image prompt that "
+                     f"generates a comic book-style image.",
+            "Cartoon": f"Convert the {search_result} into a "
+                       f"well-crafted text-to-image prompt that "
+                       f"generates a cartoon-style image.",
+            "Disney": f"Convert the {search_result} into a "
+                      f"well-crafted text-to-image prompt that "
+                      f"generates a Disney-style image.",
+            "Anime": f"Convert the {search_result} into a "
+                     f"well-crafted text-to-image prompt that "
+                     f"generates an Anime-style image.",
+            "Ghibli": f"Convert the {search_result} into a "
+                      f"well-crafted text-to-image prompt that "
+                      f"generates a Ghibli-style image.",
+            "Victorian": f"Convert the {search_result} into a "
+                         f"well-crafted text-to-image prompt that "
+                         f"generates a Victorian-era image.",
+            "Movie": f"Convert the {search_result} into a "
+                     f"well-crafted text-to-image prompt that "
+                     f"generates a Movie-style image.",
+            "Star Wars": f"Convert the {search_result} into a "
+                         f"well-crafted text-to-image prompt that "
+                         f"generates a Star Wars-style image.",
+            "Marvel": f"Convert the {search_result} into a "
+                      f"well-crafted text-to-image prompt that "
+                      f"generates a Marvel-style image.",
+            "Van Gogh": f"Convert the {search_result} into a "
+                        f"well-crafted text-to-image prompt that "
+                        f"generates a Van Gogh-style image.",
+            "Picasso": f"Convert the {search_result} into a "
+                       f"well-crafted text-to-image prompt that "
+                       f"generates a Picasso-style image"
         }
 
         # check if the image_style is supported
@@ -91,32 +112,44 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         else:
             return "Invalid image style", None, None
 
-
         # define translation options
         translation_prompt = {
             "English": f"Read out the {search_result}",
-            "Spanish": f"Translate {search_result} into Spanish. Return only the translated text.",
-            "French": f"Translate {search_result} into French. Return only the translated text.",
-            "German": f"Translate {search_result} into German. Return only the translated text.",
-            "Italian": f"Translate {search_result} into Italian. Return only the translated text.",
-            "Japanese": f"Translate {search_result} into Japanese. Return only the translated text.",
-            "Tamil": f"Translate {search_result} into Tamil. Return only the translated text.",
-            "Arabic": f"Translate {search_result} into Arabic. Return only the translated text.",
-            "Russian": f"Translate {search_result} into Russian. Return only the translated text.",
-            "Portuguese": f"Translate {search_result} Portuguese. Return only the translated text.",
-            "Dutch": f"Translate {search_result} into Dutch. Return only the translated text.",
-            "Thai": f"Translate {search_result} into Thai. Return only the translated text.",
-            "Turkish": f"Translate {search_result} into Turkish. Return only the translated text.",
-            "Romanian": f"Translate {search_result} into Romanian. Return only the translated text.",
-            "Polish": f"Translate {search_result} into Romanian. Return only the translated text."
+            "Spanish": f"Translate {search_result} into Spanish. "
+                       f"Return only the translated text.",
+            "French": f"Translate {search_result} into French. "
+                      f"Return only the translated text.",
+            "German": f"Translate {search_result} into German. "
+                      f"Return only the translated text.",
+            "Italian": f"Translate {search_result} into Italian. "
+                       f"Return only the translated text.",
+            "Japanese": f"Translate {search_result} into Japanese. "
+                        f"Return only the translated text.",
+            "Tamil": f"Translate {search_result} into Tamil. "
+                     f"Return only the translated text.",
+            "Arabic": f"Translate {search_result} into Arabic. "
+                      f"Return only the translated text.",
+            "Russian": f"Translate {search_result} into Russian. "
+                       f"Return only the translated text.",
+            "Portuguese": f"Translate {search_result} Portuguese. "
+                          f"Return only the translated text.",
+            "Dutch": f"Translate {search_result} into Dutch. "
+                     f"Return only the translated text.",
+            "Thai": f"Translate {search_result} into Thai. "
+                    f"Return only the translated text.",
+            "Turkish": f"Translate {search_result} into Turkish. "
+                       f"Return only the translated text.",
+            "Romanian": f"Translate {search_result} into Romanian. "
+                        f"Return only the translated text.",
+            "Polish": f"Translate {search_result} into Romanian. "
+                      f"Return only the translated text."
         }
 
         # updated search result
         trans_resp = client.models.generate_content(
             model=model_id,
-            contents= translation_prompt[language]
+            contents=translation_prompt[language]
         )
-
 
         # generate audio from search result
         audio_resp = client.models.generate_content(
@@ -155,7 +188,7 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
                 prompt_image += single.text
 
         # generate image
-        if prompt_image:  
+        if prompt_image:
             response = client.models.generate_content(
                 model="gemini-2.0-flash-preview-image-generation",
                 contents=prompt_image,
@@ -167,10 +200,10 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
             # extract image from response
             for part in response.candidates[0].content.parts:
                 if part.text is not None:
-                    pass 
+                    pass
                 elif part.inline_data is not None:
                     image = Image.open(BytesIO(part.inline_data.data))
-                    break  
+                    break
 
     except Exception as e:
         print(f"Error occurred: {e}")
@@ -178,4 +211,3 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         return trans_resp.text or "No search result available", None, None
 
     return trans_resp.text, image, audio_output_file
-
