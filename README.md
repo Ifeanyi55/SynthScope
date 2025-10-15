@@ -92,7 +92,7 @@ You can also run SynthScope using Docker.
 
 ## MCP Integration
 
-SynthScope supports the **Meta-Agent Communication Protocol (MCP)**, allowing it to be used as a tool by other agents and applications. This enables developers to programmatically interact with SynthScope's functionalities.
+SynthScope supports the **Model Context Protocol (MCP)**, allowing it to be used as a tool by other agents and applications. This enables developers to programmatically interact with SynthScope's functionalities.
 
 ### Connecting to the MCP Server
 
