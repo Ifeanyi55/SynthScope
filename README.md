@@ -90,15 +90,21 @@ You can also run SynthScope using Docker.
 3.  Click the "Run SynthScope" button.
 4.  The search results will be displayed as text, an image, and an audio file.
 
-## MCP
+## MCP Integration
 
-SynthScope's MCP enables you to interact with the application through your favorite MCP clients, such as [Windsurf](https://windsurf.com/), [Claude desktop](https://claude.ai/download), [Warp](https://www.warp.dev/?utm_source=google&utm_medium=search&utm_campaign=segment_ai_dev_tools_other&utm_term=best%20ai%20for%20code&gad_source=1&gad_campaignid=22880547260&gclid=CjwKCAjwk7DFBhBAEiwAeYbJscPzuFVXx0mHUo9m0yeC7Os2cLJTq7hztbLrOxE89MuBcCi2kh9bDhoC25sQAvD_BwE), and [Cursor](https://cursor.com/). You can ask your client to search for a current piece of information on Google and return a translated audio of the search result. For the best result, be specific with the kind of response you want in your prompt.
+SynthScope supports the **Model Context Protocol (MCP)**, allowing it to be used as a tool by other agents and applications. This enables developers to programmatically interact with SynthScope's functionalities.
 
-Here is an example prompt that is specific:
+### Connecting to the MCP Server
 
-*"Help me search for the current price of gold, and return the search result as a French audio narration."*
+The MCP server is exposed at the `/gradio_api/mcp/sse` endpoint of the application. You can connect to it using any MCP-compliant client.
 
-```
+There are two primary ways to configure your MCP client:
+
+**1. Direct URL Configuration:**
+
+If your client supports direct SSE URL connections, you can configure it with the following JSON object:
+
+```json
 {
   "mcpServers": {
     "SynthScope": {
@@ -107,8 +113,12 @@ Here is an example prompt that is specific:
   }
 }
 ```
-Or
-```
+
+**2. Command-Line Configuration:**
+
+For clients that use a command-line interface, you can use the `mcp-remote` tool to establish a connection. This is particularly useful for local development or when you need more control over the connection parameters.
+
+```json
 {
   "mcpServers": {
     "SynthScope": {
@@ -122,6 +132,16 @@ Or
     }
   }
 }
+```
+
+### Example Usage
+
+Once connected, you can send requests to SynthScope with a specific prompt. For optimal results, your prompt should be as descriptive as possible.
+
+**Example Prompt:**
+
+```
+"Help me search for the current price of gold, and return the search result as a French audio narration."
 ```
 
 ## Contributing
