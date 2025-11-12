@@ -71,39 +71,17 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
 
         # define style-specific prompts
         style_prompts = {
-            "Comic": f"Convert the {search_result} into a "
-                     f"well-crafted text-to-image prompt that "
-                     f"generates a comic book-style image.",
-            "Cartoon": f"Convert the {search_result} into a "
-                       f"well-crafted text-to-image prompt that "
-                       f"generates a cartoon-style image.",
-            "Disney": f"Convert the {search_result} into a "
-                      f"well-crafted text-to-image prompt that "
-                      f"generates a Disney-style image.",
-            "Anime": f"Convert the {search_result} into a "
-                     f"well-crafted text-to-image prompt that "
-                     f"generates an Anime-style image.",
-            "Ghibli": f"Convert the {search_result} into a "
-                      f"well-crafted text-to-image prompt that "
-                      f"generates a Ghibli-style image.",
-            "Victorian": f"Convert the {search_result} into a "
-                         f"well-crafted text-to-image prompt that "
-                         f"generates a Victorian-era image.",
-            "Movie": f"Convert the {search_result} into a "
-                     f"well-crafted text-to-image prompt that "
-                     f"generates a Movie-style image.",
-            "Star Wars": f"Convert the {search_result} into a "
-                         f"well-crafted text-to-image prompt that "
-                         f"generates a Star Wars-style image.",
-            "Marvel": f"Convert the {search_result} into a "
-                      f"well-crafted text-to-image prompt that "
-                      f"generates a Marvel-style image.",
-            "Van Gogh": f"Convert the {search_result} into a "
-                        f"well-crafted text-to-image prompt that "
-                        f"generates a Van Gogh-style image.",
-            "Picasso": f"Convert the {search_result} into a "
-                       f"well-crafted text-to-image prompt that "
-                       f"generates a Picasso-style image"
+            "Comic": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a comic book-style image.",
+            "Cartoon": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a cartoon-style image.",
+            "Disney": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Disney-style image.",
+            "Anime": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates an Anime-style image.",
+            "Ghibli": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Ghibli-style image.",
+            "Victorian": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Victorian-era image.",
+            "Movie": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Movie-style image.",
+            "Star Wars": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Star Wars-style image.",
+            "Marvel": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Marvel-style image.",
+            "Van Gogh": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Van Gogh-style image.",
+            "Picasso": f"Convert the {search_result} into a well-crafted text-to-image prompt that generates a Picasso-style image"
         }
 
         # check if the image_style is supported
@@ -115,34 +93,20 @@ def GoogleSearchImageGen(prompt, image_style, voices, language):
         # define translation options
         translation_prompt = {
             "English": f"Read out the {search_result}",
-            "Spanish": f"Translate {search_result} into Spanish. "
-                       f"Return only the translated text.",
-            "French": f"Translate {search_result} into French. "
-                      f"Return only the translated text.",
-            "German": f"Translate {search_result} into German. "
-                      f"Return only the translated text.",
-            "Italian": f"Translate {search_result} into Italian. "
-                       f"Return only the translated text.",
-            "Japanese": f"Translate {search_result} into Japanese. "
-                        f"Return only the translated text.",
-            "Tamil": f"Translate {search_result} into Tamil. "
-                     f"Return only the translated text.",
-            "Arabic": f"Translate {search_result} into Arabic. "
-                      f"Return only the translated text.",
-            "Russian": f"Translate {search_result} into Russian. "
-                       f"Return only the translated text.",
-            "Portuguese": f"Translate {search_result} Portuguese. "
-                          f"Return only the translated text.",
-            "Dutch": f"Translate {search_result} into Dutch. "
-                     f"Return only the translated text.",
-            "Thai": f"Translate {search_result} into Thai. "
-                    f"Return only the translated text.",
-            "Turkish": f"Translate {search_result} into Turkish. "
-                       f"Return only the translated text.",
-            "Romanian": f"Translate {search_result} into Romanian. "
-                        f"Return only the translated text.",
-            "Polish": f"Translate {search_result} into Romanian. "
-                      f"Return only the translated text."
+            "Spanish": f"Translate {search_result} into Spanish. Return only the translated text.",
+            "French": f"Translate {search_result} into French. Return only the translated text.",
+            "German": f"Translate {search_result} into German. Return only the translated text.",
+            "Italian": f"Translate {search_result} into Italian. Return only the translated text.",
+            "Japanese": f"Translate {search_result} into Japanese. Return only the translated text.",
+            "Tamil": f"Translate {search_result} into Tamil. Return only the translated text.",
+            "Arabic": f"Translate {search_result} into Arabic. Return only the translated text.",
+            "Russian": f"Translate {search_result} into Russian. Return only the translated text.",
+            "Portuguese": f"Translate {search_result} Portuguese. Return only the translated text.",
+            "Dutch": f"Translate {search_result} into Dutch. Return only the translated text.",
+            "Thai": f"Translate {search_result} into Thai. Return only the translated text.",
+            "Turkish": f"Translate {search_result} into Turkish. Return only the translated text.",
+            "Romanian": f"Translate {search_result} into Romanian. Return only the translated text.",
+            "Polish": f"Translate {search_result} into Romanian. Return only the translated text."
         }
 
         # updated search result
