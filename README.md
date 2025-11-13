@@ -66,7 +66,7 @@ SynthScope uses the Google Gemini API to perform the following steps:
     ```
 4.  Run the application:
     ```bash
-    gradio app.py
+    python app.py
     ```
 
 ## Local Deployment with Docker
