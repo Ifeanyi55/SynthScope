@@ -8,7 +8,7 @@
 [![Last Commit](https://img.shields.io/github/last-commit/Ifeanyi55/SynthScope)](https://github.com/Ifeanyi55/SynthScope/commits/main)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Ifeanyi55/SynthScope)
 
-A web search agent that enables you to search, visualize, and listen to information. Powered by the Gemini family of models.
+An intelligent web search agent that enables you to search, visualize, and listen to information. Powered by the Gemini family of models.
 
 ![SynthScope](SynthScope.gif)
 
