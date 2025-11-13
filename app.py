@@ -82,8 +82,7 @@ with gr.Blocks(
     gr.HTML("""
     <h4><p style='color:#14b8a6;text-shadow: 0 0 20px
      rgba(20, 184, 166, 0.4);text-align:center;'>
-     SynthScope enables you to return web search results as text,
-      image, and translated audio simultaneously.</p></h4>
+     SynthScope is an intelligent Web Search Agent that delivers results in text, image, and translated audio simultaneously.</p></h4>
       """)
 
     # Collapsible Sidebar for Controls
